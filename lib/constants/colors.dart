@@ -9,4 +9,4 @@ Color end = Color(0xFFD12B49);
 const Color tertiaryColor = Color.fromARGB(41, 40, 150, 253);
 const Color greyColor = Color.fromARGB(201, 225, 222, 222);
 Color reschedule = Color(0xFFFFFA78);
-
+Color scaffold = Color(0xFFf5f5f7);

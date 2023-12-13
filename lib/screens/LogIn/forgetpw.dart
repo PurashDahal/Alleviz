@@ -1,23 +1,29 @@
+import 'package:alleviz/constants/colors.dart';
 import 'package:alleviz/screens/LogIn/verification.dart';
 import 'package:alleviz/screens/LogIn/widgets/logo.dart';
+import 'package:alleviz/screens/homePage/widgets/default_app_bar.dart';
+import 'package:alleviz/screens/homePage/widgets/default_app_bar2.dart';
 import 'package:alleviz/screens/spalsh/splashcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
+import 'package:cached_network_image/cached_network_image.dart';
 
 class ForgotPassword extends StatelessWidget {
   const ForgotPassword({super.key});
-
+  // final CachedNetworkImageProvider gifProvider =
+  //     const CachedNetworkImageProvider('assets/gifs/forgotpw.gif');
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
 
     void Verification() {
-      Navigator.pushReplacement(context,
+      Navigator.push(context,
           MaterialPageRoute(builder: (context) => VerificationScreen()));
     }
 
     return Scaffold(
+      appBar: AppBar(),
+      backgroundColor: scaffold,
       bottomNavigationBar: Container(
         margin: EdgeInsets.only(left: 25, right: 25, bottom: mq.height * 0.01),
         child: SizedBox(
@@ -47,7 +53,8 @@ class ForgotPassword extends StatelessWidget {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                margin: EdgeInsets.only(top: mq.height * 0.01), child: Logo()),
+                margin: EdgeInsets.only(top: mq.height * 0.01),
+                child: DefaultAppBar2()),
             SizedBox(
               height: mq.height * 0.05,
             ),
@@ -66,7 +73,7 @@ class ForgotPassword extends StatelessWidget {
               height: 15,
             ),
             SizedBox(
-              height: 40,
+              height: mq.height * 0.06,
               child: TextField(
                 keyboardType: TextInputType.emailAddress,
                 decoration: InputDecoration(
@@ -81,8 +88,16 @@ class ForgotPassword extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30))),
               ),
             ),
-            Expanded(
-                child: LottieBuilder.asset('assets/animations/forget.json'))
+            Expanded(child: Image.asset("assets/gifs/forgotpw.gif"))
+            // Expanded(
+            //   child: CachedNetworkImage(
+            //     imageUrl: 'assets/gifs/forgotpw.gif',
+            //     cacheKey: 'forgot_password_gif',
+            //     imageBuilder: (context, imageProvider) {
+            //       return Image(image: imageProvider);
+            //     },
+            //   ),
+            // )
           ],
         ),
       ),

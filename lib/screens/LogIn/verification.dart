@@ -1,4 +1,3 @@
-
 import 'package:alleviz/screens/LogIn/newPw.dart';
 import 'package:alleviz/screens/LogIn/widgets/logo.dart';
 import 'package:alleviz/screens/spalsh/splashcolor.dart';
@@ -12,7 +11,7 @@ class VerificationScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     void loginscreen() {
-      Navigator.pushReplacement(
+      Navigator.push(
           context, MaterialPageRoute(builder: (context) => NewPassword()));
     }
 
@@ -57,7 +56,7 @@ class VerificationScreen extends StatelessWidget {
               height: 15,
             ),
             SizedBox(
-              height: 40,
+              height: mq.height * 0.06,
               child: TextField(
                 keyboardType: TextInputType.number,
                 decoration: InputDecoration(

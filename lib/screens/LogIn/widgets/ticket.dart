@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 
-
 class TickWidget extends StatefulWidget {
   const TickWidget({super.key});
 
@@ -15,6 +14,7 @@ class _TickWidgetState extends State<TickWidget> {
     return Row(
       children: [
         Checkbox(
+          activeColor: Colors.green,
           value: isChecked,
           onChanged: (bool? value) {
             setState(() {

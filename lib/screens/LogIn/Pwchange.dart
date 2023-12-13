@@ -17,7 +17,7 @@ class _PasswordChangeState extends State<PasswordChange> {
   void initState() {
     super.initState();
     Future.delayed(const Duration(seconds: 4), () {
-      Navigator.pushReplacement(
+      Navigator.push(
           context, MaterialPageRoute(builder: (context) => LoginScreen()));
     });
   }
@@ -59,8 +59,7 @@ class _PasswordChangeState extends State<PasswordChange> {
                   ],
                 ),
               ),
-              Expanded(
-                  child: LottieBuilder.asset("assets/animations/reset.json"))
+              Expanded(child: Image.asset('assets/gifs/Done.gif'))
             ],
           ),
         ),

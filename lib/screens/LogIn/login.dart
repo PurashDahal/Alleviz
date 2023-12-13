@@ -4,12 +4,19 @@ import 'package:alleviz/screens/LogIn/widgets/ticket.dart';
 import 'package:alleviz/screens/homePage/home_page.dart';
 import 'package:alleviz/screens/spalsh/splashcolor.dart';
 import 'package:flutter/material.dart';
+// import 'package:flutter_gif/flutter_gif.dart';
+// import 'package:gif/gif.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:lottie/lottie.dart';
 
-class LoginScreen extends StatelessWidget {
+class LoginScreen extends StatefulWidget {
   const LoginScreen({super.key});
 
+  @override
+  State<LoginScreen> createState() => _LoginScreenState();
+}
+
+class _LoginScreenState extends State<LoginScreen>
+    with SingleTickerProviderStateMixin {
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
@@ -20,154 +27,151 @@ class LoginScreen extends StatelessWidget {
     }
 
     void forgotPassword() {
-      Navigator.pushReplacement(
+      Navigator.push(
           context, MaterialPageRoute(builder: (context) => ForgotPassword()));
     }
 
-    return SafeArea(
-      child: Scaffold(
-        bottomNavigationBar: Container(
-          margin:
-              EdgeInsets.only(bottom: mq.height * 0.01, left: 25, right: 25),
-          // margin: EdgeInsets.only(),
-          child: SizedBox(
-            height: mq.height * 0.06,
-            child: ElevatedButton(
-              style: ElevatedButton.styleFrom(
-                backgroundColor: primaryColor,
-                foregroundColor: Colors.white,
-              ),
-              onPressed: () {
-                loginScreen();
-              },
-              child: Text(
-                'LOGIN',
-                style: GoogleFonts.getFont(
-                  'Lato',
-                  fontSize: 18,
-                ),
+    return Scaffold(
+      backgroundColor: Color(0xFFf5f5f7),
+      bottomNavigationBar: Container(
+        margin: EdgeInsets.only(bottom: mq.height * 0.01, left: 25, right: 25),
+        // margin: EdgeInsets.only(),
+        child: SizedBox(
+          height: mq.height * 0.06,
+          child: ElevatedButton(
+            style: ElevatedButton.styleFrom(
+              backgroundColor: primaryColor,
+              foregroundColor: Colors.white,
+            ),
+            onPressed: () {
+              loginScreen();
+            },
+            child: Text(
+              'LOGIN',
+              style: GoogleFonts.getFont(
+                'Lato',
+                fontSize: 18,
               ),
             ),
           ),
         ),
-        body: SingleChildScrollView(
-          child: Container(
-            height: mq.height,
-            width: mq.width,
-            margin: const EdgeInsets.only(left: 25, right: 20),
-            child: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                Container(
-                  margin: EdgeInsets.only(
-                      left: mq.width * 0.25, top: mq.height * 0.04),
-                  child: const Logo(),
-                ),
-                SizedBox(
-                  height: 45,
-                ),
-                Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                          left: 13,
-                          bottom: 8,
-                        ),
-                        child: Text(
-                          'Login ID',
-                          style: GoogleFonts.getFont(
-                            'Lato',
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 40,
-                        child: TextField(
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(16)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                SizedBox(
-                  height: 15,
-                ),
-                Container(
-                  child: Column(
-                    crossAxisAlignment: CrossAxisAlignment.start,
-                    children: [
-                      Container(
-                        margin: EdgeInsets.only(
-                          left: 13,
-                          bottom: 8,
-                        ),
-                        child: Text(
-                          'Password',
-                          style: GoogleFonts.getFont(
-                            'Lato',
-                            fontSize: 15,
-                          ),
-                        ),
-                      ),
-                      SizedBox(
-                        height: 40,
-                        child: TextField(
-                          keyboardType: TextInputType.visiblePassword,
-                          obscureText: true,
-                          decoration: InputDecoration(
-                            contentPadding: EdgeInsets.symmetric(
-                                vertical: 10, horizontal: 10),
-                            border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(16)),
-                          ),
-                        ),
-                      ),
-                    ],
-                  ),
-                ),
-                const SizedBox(
-                  height: 15,
-                ),
-                Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    Row(
-                      children: [
-                        TickWidget(),
-                        Text(
-                          'Remember Me',
-                          style: GoogleFonts.getFont('Lato'),
-                        )
-                      ],
+      ),
+      body: Container(
+        height: mq.height,
+        width: mq.width,
+        margin: const EdgeInsets.only(left: 25, right: 20),
+        child: Column(
+          crossAxisAlignment: CrossAxisAlignment.start,
+          children: [
+            Container(
+              margin:
+                  EdgeInsets.only(left: mq.width * 0.25, top: mq.height * 0.04),
+              child: const Logo(),
+            ),
+            SizedBox(
+              height: 45,
+            ),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                      left: 13,
+                      bottom: 8,
                     ),
-                    TextButton(
-                      onPressed: () {
-                        forgotPassword();
-                      },
-                      child: Text(
-                        'Forgot Password',
-                        style: GoogleFonts.getFont(
-                          'Lato',
-                          fontSize: 12,
-                        ),
+                    child: Text(
+                      'Login ID',
+                      style: GoogleFonts.getFont(
+                        'Lato',
+                        fontSize: 15,
+                        fontWeight: FontWeight.bold,
                       ),
+                    ),
+                  ),
+                  SizedBox(
+                    height: mq.height * 0.06,
+                    child: TextField(
+                      decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            SizedBox(
+              height: 15,
+            ),
+            Container(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Container(
+                    margin: EdgeInsets.only(
+                      left: 13,
+                      bottom: 8,
+                    ),
+                    child: Text(
+                      'Password',
+                      style: GoogleFonts.getFont('Lato',
+                          fontSize: 15, fontWeight: FontWeight.bold),
+                    ),
+                  ),
+                  SizedBox(
+                    height: mq.height * 0.06,
+                    child: TextField(
+                      keyboardType: TextInputType.visiblePassword,
+                      obscureText: true,
+                      decoration: InputDecoration(
+                        contentPadding:
+                            EdgeInsets.symmetric(vertical: 10, horizontal: 10),
+                        border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(50)),
+                      ),
+                    ),
+                  ),
+                ],
+              ),
+            ),
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Row(
+                  children: [
+                    TickWidget(),
+                    Text(
+                      'Remember me?',
+                      style: GoogleFonts.getFont('Lato'),
                     )
                   ],
                 ),
-                SizedBox(
-                    height: MediaQuery.of(context).size.height * 0.4,
-                    child: Lottie.asset('assets/animations/login.json')),
+                TextButton(
+                  onPressed: () {
+                    forgotPassword();
+                  },
+                  child: Text(
+                    'Forgot Password?',
+                    style: GoogleFonts.getFont('Lato',
+                        fontSize: 12,
+                        color: primaryColor,
+                        fontWeight: FontWeight.bold),
+                  ),
+                )
               ],
             ),
-          ),
+            SizedBox(
+              height: MediaQuery.of(context).size.height * 0.4,
+              child: Image.asset('assets/gifs/login.gif'),
+              // GifImage(
+              //   image: AssetImage("assets/gifs/login.gif"),
+              //   controller: FlutterGifController(
+              //       vsync: this, duration: Duration(seconds: 3)),
+            )
+          ],
         ),
       ),
     );

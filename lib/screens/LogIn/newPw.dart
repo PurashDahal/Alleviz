@@ -3,6 +3,7 @@
 import 'package:alleviz/screens/LogIn/Pwchange.dart';
 import 'package:alleviz/screens/LogIn/widgets/logo.dart';
 import 'package:alleviz/screens/LogIn/widgets/ticket.dart';
+import 'package:alleviz/screens/homePage/widgets/default_app_bar2.dart';
 import 'package:alleviz/screens/spalsh/splashcolor.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -27,7 +28,7 @@ class _NewPasswordState extends State<NewPassword> {
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
     void passwordChange() {
-      Navigator.pushReplacement(
+      Navigator.push(
           context, MaterialPageRoute(builder: (context) => PasswordChange()));
     }
 
@@ -39,7 +40,8 @@ class _NewPasswordState extends State<NewPassword> {
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
             Container(
-                margin: EdgeInsets.only(top: mq.height * 0.01), child: Logo()),
+                margin: EdgeInsets.only(top: mq.height * 0.01),
+                child: DefaultAppBar2()),
             SizedBox(
               height: mq.height * 0.05,
             ),
@@ -61,7 +63,7 @@ class _NewPasswordState extends State<NewPassword> {
               height: 55,
             ),
             SizedBox(
-              height: 40,
+              height: mq.height * 0.06,
               child: TextField(
                 obscureText: _obsecureText,
                 keyboardType: TextInputType.visiblePassword,
@@ -85,7 +87,7 @@ class _NewPasswordState extends State<NewPassword> {
               height: 20,
             ),
             SizedBox(
-              height: 40,
+              height: mq.height * 0.06,
               child: TextField(
                 keyboardType: TextInputType.visiblePassword,
                 obscureText: true,
