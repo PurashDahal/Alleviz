@@ -4,8 +4,9 @@ import 'package:alleviz/screens/LogIn/widgets/ticket.dart';
 import 'package:alleviz/screens/homePage/home_page.dart';
 import 'package:alleviz/screens/spalsh/splashcolor.dart';
 import 'package:flutter/material.dart';
+// import 'package:gif_view/gif_view.dart';
 // import 'package:flutter_gif/flutter_gif.dart';
-// import 'package:gif/gif.dart';
+import 'package:gif/gif.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 class LoginScreen extends StatefulWidget {
@@ -17,6 +18,22 @@ class LoginScreen extends StatefulWidget {
 
 class _LoginScreenState extends State<LoginScreen>
     with SingleTickerProviderStateMixin {
+  late final GifController controller;
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = GifController(vsync: this);
+
+    // gitSetUp();
+  }
+
+  // void gitSetUp() async {
+  //   controller.play();
+  //   await Future.delayed(Duration(milliseconds: 1000));
+  //   controller.stop();
+  // }
+
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
@@ -164,12 +181,24 @@ class _LoginScreenState extends State<LoginScreen>
               ],
             ),
             SizedBox(
-              height: MediaQuery.of(context).size.height * 0.4,
-              child: Image.asset('assets/gifs/login.gif'),
-              // GifImage(
-              //   image: AssetImage("assets/gifs/login.gif"),
-              //   controller: FlutterGifController(
-              //       vsync: this, duration: Duration(seconds: 3)),
+              height: 40,
+            ),
+            Center(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.4,
+                child: Gif(
+                  image: AssetImage('assets/gifs/login.gif'),
+                  repeat: ImageRepeat.noRepeat,
+                  autostart: Autostart.once,
+                  controller: controller,
+                  placeholder: (context) => const Text('Loading...'),
+                  onFetchCompleted: () {
+                    controller.reset();
+                    
+                    controller.forward();
+                  },
+                ),
+              ),
             )
           ],
         ),

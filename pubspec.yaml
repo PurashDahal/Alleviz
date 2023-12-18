@@ -41,6 +41,7 @@ dependencies:
   gif: ^2.3.0
   flutter_gif: ^0.0.4
   cached_network_image: ^3.3.0
+  gif_view: ^0.4.0
 
 dev_dependencies:
   flutter_test:
@@ -70,6 +71,7 @@ flutter:
     - assets/images/
     - assets/animations/
     - assets/gifs/
+    - assets/gifs/end.gif
   #   - images/a_dot_ham.jpeg
 
   # An image asset can refer to one or more resolution-specific "variants", see

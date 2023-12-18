@@ -1,8 +1,10 @@
+import 'package:alleviz/constants/colors.dart';
 import 'package:alleviz/constants/fonts.dart';
 import 'package:alleviz/screens/homePage/home_page.dart';
 // import 'package:alleviz/screens/homePage/home_page.dart';
 import 'package:alleviz/screens/homePage/widgets/default_app_bar.dart';
 import 'package:flutter/material.dart';
+import 'package:gif/gif.dart';
 import 'package:lottie/lottie.dart';
 
 class MeetingRemove extends StatefulWidget {
@@ -12,9 +14,12 @@ class MeetingRemove extends StatefulWidget {
   State<MeetingRemove> createState() => _MeetingRemoveState();
 }
 
-class _MeetingRemoveState extends State<MeetingRemove> {
+class _MeetingRemoveState extends State<MeetingRemove>
+    with SingleTickerProviderStateMixin {
+  late final GifController controller;
   @override
   void initState() {
+    controller = GifController(vsync: this);
     // TODO: implement initState
 
     Future.delayed(const Duration(seconds: 2), () {
@@ -28,6 +33,7 @@ class _MeetingRemoveState extends State<MeetingRemove> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: scaffold,
       body: body(),
     );
   }
@@ -50,7 +56,17 @@ class _MeetingRemoveState extends State<MeetingRemove> {
           "Covisitor has been removed",
           style: lato().copyWith(fontWeight: FontWeight.bold),
         ),
-        Expanded(child: LottieBuilder.asset('assets/animations/end.json'))
+        Expanded(
+            child: Gif(
+                image: AssetImage('assets/gifs/end.gif'),
+                repeat: ImageRepeat.noRepeat,
+                autostart: Autostart.once,
+                controller: controller,
+                placeholder: (context) => const Text(''),
+                onFetchCompleted: () {
+                  controller.reset();
+                  controller.forward();
+                }))
       ],
     );
   }

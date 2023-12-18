@@ -3,6 +3,7 @@ import 'package:alleviz/screens/homePage/meetin_details.dart';
 import 'package:alleviz/screens/homePage/widgets/rescheduling_meeting_details.dart';
 import 'package:flutter/material.dart';
 
+import '../../../constants/fonts.dart';
 import '../modal.dart';
 
 class MeetCard extends StatelessWidget {
@@ -48,7 +49,10 @@ class MeetCard extends StatelessWidget {
                   SizedBox(
                     height: 20,
                   ),
-                  Text(meeting.status)
+                  Text(
+                    meeting.status,
+                    style: bold().copyWith(fontWeight: FontWeight.w500),
+                  )
                 ],
               ),
             )),
@@ -78,12 +82,18 @@ class MeetCard extends StatelessWidget {
             ),
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
-              children: [Text(meeting.name), Text(meeting.id)],
+              children: [
+                Text(
+                  meeting.name,
+                  style: bold(),
+                ),
+                Text(meeting.id)
+              ],
             ),
           ],
         ),
         const Spacer(),
-        Text(meeting.time)
+        Text(meeting.time, style: bold().copyWith(fontWeight: FontWeight.w500))
       ],
     );
   }

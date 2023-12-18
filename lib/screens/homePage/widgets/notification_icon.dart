@@ -14,6 +14,9 @@ class NotificationIcon extends StatelessWidget {
                 return NotificationScreen();
               }));
             },
-            icon: Icon(Icons.notifications_outlined)));
+            icon: Icon(
+              Icons.notifications_outlined,
+              size: 35,
+            )));
   }
 }

@@ -1,15 +1,114 @@
-
+import 'package:alleviz/screens/LogIn/existingMeeting.dart';
 import 'package:alleviz/screens/homePage/new_meeting/time_date.dart';
 import 'package:alleviz/screens/homePage/widgets/radio_button.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../../constants/colors.dart';
+import '../../../constants/fonts.dart';
 import '../../LogIn/create_meeting.dart';
 import '../../spalsh/splashcolor.dart';
 
-class NewMeetingScreen extends StatelessWidget {
+class NewMeetingScreen extends StatefulWidget {
   const NewMeetingScreen({super.key});
+
+  @override
+  State<NewMeetingScreen> createState() => _NewMeetingScreenState();
+}
+
+class _NewMeetingScreenState extends State<NewMeetingScreen> {
+  @override
+  void initState() {
+    // TODO: implement initState
+    WidgetsBinding.instance.addPostFrameCallback((timeStamp) {
+      showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return AlertDialog(
+            content: Column(
+              mainAxisSize: MainAxisSize.min,
+              children: [
+                Text(
+                  'Create new meeting with',
+                  style: lato().copyWith(
+                      fontWeight: FontWeight.w500,
+                      fontSize: 17,
+                      color: Colors.black),
+                ),
+                SizedBox(
+                  height: 50,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) {
+                      return ExisitingMeeting();
+                    }));
+                  },
+                  child: Container(
+                    decoration: BoxDecoration(
+                        color: primary,
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "PICK FROM EXISTANCE",
+                            style: lato().copyWith(
+                                color: wh,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12),
+                          ),
+                          Icon(
+                            Icons.touch_app_outlined,
+                            color: wh,
+                          )
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+                SizedBox(
+                  height: 5,
+                ),
+                InkWell(
+                  onTap: () {
+                    Navigator.push(context, MaterialPageRoute(builder: (_) {
+                      return NewMeetingScreen();
+                    }));
+                  },
+                  child: Container(
+                    height: MediaQuery.of(context).size.height * 0.05,
+                    decoration: BoxDecoration(
+                        border: Border.all(color: primary),
+                        borderRadius: BorderRadius.circular(50)),
+                    child: Padding(
+                      padding: const EdgeInsets.all(5.0),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Text(
+                            "ADD NEW",
+                            style: lato().copyWith(
+                                color: primary,
+                                fontWeight: FontWeight.w600,
+                                fontSize: 12),
+                          ),
+                        ],
+                      ),
+                    ),
+                  ),
+                ),
+              ],
+            ),
+          );
+        },
+      );
+    });
+    super.initState();
+  }
 
   @override
   Widget build(BuildContext context) {

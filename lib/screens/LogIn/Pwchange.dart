@@ -1,7 +1,10 @@
 // import 'package:alleviz/widgets/tick_mark.dart';
+import 'package:alleviz/constants/colors.dart';
 import 'package:alleviz/screens/LogIn/login.dart';
 import 'package:alleviz/screens/LogIn/widgets/logo.dart';
 import 'package:flutter/material.dart';
+import 'package:gif/gif.dart';
+// import 'package:gif_view/gif_view.dart';
 import 'package:google_fonts/google_fonts.dart';
 import 'package:lottie/lottie.dart';
 
@@ -12,9 +15,13 @@ class PasswordChange extends StatefulWidget {
   State<PasswordChange> createState() => _PasswordChangeState();
 }
 
-class _PasswordChangeState extends State<PasswordChange> {
+class _PasswordChangeState extends State<PasswordChange>
+    with SingleTickerProviderStateMixin {
+  late final GifController controller;
   @override
   void initState() {
+    controller = GifController(vsync: this);
+
     super.initState();
     Future.delayed(const Duration(seconds: 4), () {
       Navigator.push(
@@ -28,6 +35,7 @@ class _PasswordChangeState extends State<PasswordChange> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: scaffold,
         body: Container(
           height: mq.height,
           width: mq.width,
@@ -59,7 +67,22 @@ class _PasswordChangeState extends State<PasswordChange> {
                   ],
                 ),
               ),
-              Expanded(child: Image.asset('assets/gifs/Done.gif'))
+              Center(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  child: Gif(
+                    image: AssetImage('assets/gifs/Done.gif'),
+                    repeat: ImageRepeat.noRepeat,
+                    autostart: Autostart.once,
+                    controller: controller,
+                    placeholder: (context) => const Text(''),
+                    onFetchCompleted: () {
+                      controller.reset();
+                      controller.forward();
+                    },
+                  ),
+                ),
+              )
             ],
           ),
         ),

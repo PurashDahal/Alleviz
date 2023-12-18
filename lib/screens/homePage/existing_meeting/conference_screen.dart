@@ -1,3 +1,4 @@
+import 'package:alleviz/screens/homePage/new_meeting/congrats.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -309,8 +310,7 @@ class ConferenceScreen extends StatelessWidget {
                           Navigator.pushReplacement(
                               context,
                               MaterialPageRoute(
-                                  builder: (context) =>
-                                      CongratulationScreen()));
+                                  builder: (context) => CongratsScreen()));
                         },
                         style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue,

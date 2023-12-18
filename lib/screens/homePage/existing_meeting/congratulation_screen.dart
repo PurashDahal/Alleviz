@@ -1,5 +1,7 @@
+import 'package:alleviz/constants/colors.dart';
 import 'package:alleviz/screens/homePage/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:gif/gif.dart';
 import 'package:google_fonts/google_fonts.dart';
 
 import '../../LogIn/login.dart';
@@ -12,9 +14,12 @@ class CongratulationScreen extends StatefulWidget {
   State<CongratulationScreen> createState() => _CongratulationScreenState();
 }
 
-class _CongratulationScreenState extends State<CongratulationScreen> {
+class _CongratulationScreenState extends State<CongratulationScreen>
+    with SingleTickerProviderStateMixin {
+  late final GifController controller;
   @override
   void initState() {
+    controller = GifController(vsync: this);
     super.initState();
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
@@ -28,6 +33,7 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: scaffold,
         body: Container(
           height: mq.height,
           width: mq.width,
@@ -59,6 +65,22 @@ class _CongratulationScreenState extends State<CongratulationScreen> {
                               fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                   ],
+                ),
+              ),
+              Center(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  child: Gif(
+                    image: AssetImage('assets/gifs/created2.gif'),
+                    repeat: ImageRepeat.noRepeat,
+                    autostart: Autostart.once,
+                    controller: controller,
+                    placeholder: (context) => const Text(''),
+                    onFetchCompleted: () {
+                      controller.reset();
+                      controller.forward();
+                    },
+                  ),
                 ),
               )
             ],

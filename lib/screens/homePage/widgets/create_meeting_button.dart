@@ -7,8 +7,10 @@ class CreateMeetingButton extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Expanded(
-      flex: 1,
+    final system = MediaQuery.of(context).size.height * 0.6;
+    return Container(
+      height: MediaQuery.of(context).size.height * 0.1,
+      // flex: 1,
       child: InkWell(
         onTap: () {
           Navigator.push(context, MaterialPageRoute(builder: (_) {
@@ -22,7 +24,7 @@ class CreateMeetingButton extends StatelessWidget {
             borderRadius: BorderRadius.circular(22),
             color: Colors.blue,
           ),
-          height: 20,
+          height: system,
           child: Center(
               child: Text(
             "Create Meeting",

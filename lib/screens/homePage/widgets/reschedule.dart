@@ -182,7 +182,7 @@ class _RescheduleState extends State<Reschedule> {
                   bottom: mq.height * 0.01, left: mq.width * 0.12),
               child: SizedBox(
                 width: mq.width * 0.75,
-                height: mq.height * 0.05,
+                height: mq.height * 0.06,
                 child: ElevatedButton(
                   onPressed: () {
                     Navigator.pushReplacement(

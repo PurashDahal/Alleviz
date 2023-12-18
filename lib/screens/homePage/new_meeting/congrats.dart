@@ -1,8 +1,10 @@
 import 'package:alleviz/screens/homePage/home_page.dart';
 import 'package:flutter/material.dart';
+import 'package:gif/gif.dart';
 import 'package:google_fonts/google_fonts.dart';
 
-import '../../LogIn/login.dart';
+import '../../../constants/colors.dart';
+
 import '../../LogIn/widgets/logo.dart';
 
 class CongratsScreen extends StatefulWidget {
@@ -12,10 +14,13 @@ class CongratsScreen extends StatefulWidget {
   State<CongratsScreen> createState() => _CongratsScreenState();
 }
 
-class _CongratsScreenState extends State<CongratsScreen> {
+class _CongratsScreenState extends State<CongratsScreen>
+    with SingleTickerProviderStateMixin {
+  late final GifController controller;
   @override
   void initState() {
     super.initState();
+    controller = GifController(vsync: this);
     Future.delayed(const Duration(seconds: 2), () {
       Navigator.pushReplacement(
           // purash vai code here
@@ -30,6 +35,7 @@ class _CongratsScreenState extends State<CongratsScreen> {
 
     return SafeArea(
       child: Scaffold(
+        backgroundColor: scaffold,
         body: Container(
           height: mq.height,
           width: mq.width,
@@ -61,6 +67,22 @@ class _CongratsScreenState extends State<CongratsScreen> {
                               fontWeight: FontWeight.bold, fontSize: 20)),
                     ),
                   ],
+                ),
+              ),
+              Center(
+                child: SizedBox(
+                  height: MediaQuery.of(context).size.height * 0.4,
+                  child: Gif(
+                    image: AssetImage('assets/gifs/created2.gif'),
+                    repeat: ImageRepeat.noRepeat,
+                    autostart: Autostart.once,
+                    controller: controller,
+                    placeholder: (context) => const Text(''),
+                    onFetchCompleted: () {
+                      controller.reset();
+                      controller.forward();
+                    },
+                  ),
                 ),
               )
             ],

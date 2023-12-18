@@ -14,7 +14,8 @@ class _NewMeetingState extends State<NewMeeting> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        body: AlertDialog(
+        body:
+         AlertDialog(
       title: Text(
         'Create new meeting with',
         style: GoogleFonts.getFont('Lato', textStyle: TextStyle(fontSize: 18)),
@@ -39,6 +40,8 @@ class _NewMeetingState extends State<NewMeeting> {
           child: Text('Add new'),
         ),
       ],
-    ));
+    )
+   
+    );
   }
 }

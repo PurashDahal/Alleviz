@@ -31,6 +31,7 @@ class MeetingDetails extends StatelessWidget {
   body(context, covisiter) {
     final deviceh = MediaQuery.of(context).size.height;
     final devicew = MediaQuery.of(context).size.width;
+    final bs = BorderSide(width: 0.6);
     return Stack(
       children: [
         Container(
@@ -45,11 +46,11 @@ class MeetingDetails extends StatelessWidget {
         Column(
           children: [
             SizedBox(
-              height: 30,
+              height: deviceh * 0.15,
             ),
             Center(
               child: Container(
-                height: deviceh * 0.7,
+                height: deviceh * 0.5,
                 width: devicew * 0.8,
                 decoration: BoxDecoration(
                     color: wh, borderRadius: BorderRadius.circular(22)),
@@ -89,7 +90,8 @@ class MeetingDetails extends StatelessWidget {
                   ),
                   Text(
                     meeting.id,
-                    style: lato().copyWith(color: Colors.black),
+                    style: lato().copyWith(
+                        color: Colors.black, fontWeight: FontWeight.bold),
                   ),
                   Text(
                     "Regarding Invoice | ${meeting.time}",
@@ -109,15 +111,19 @@ class MeetingDetails extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(
-                            left: 8.0,
-                            right: 8.0,
+                            left: 7.0,
+                            right: 7.0,
                           ),
-                          child: Card(
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(0)),
+                          child: Container(
+                            decoration: BoxDecoration(
+                                border: Border(
+                                    bottom: BorderSide(width: 0.6),
+                                    right: bs,
+                                    left: bs),
+                                borderRadius: BorderRadius.circular(12)),
                             child: Padding(
                               padding: const EdgeInsets.only(
-                                  top: 5.0, left: 20, bottom: 5.0),
+                                  top: 15.0, left: 20, bottom: 15.0),
                               child: Text(covisiter[index]),
                             ),
                           ),
@@ -143,11 +149,13 @@ class MeetingDetails extends StatelessWidget {
                   decoration: BoxDecoration(
                       color: end, borderRadius: BorderRadius.circular(30)),
                   child: Padding(
-                    padding: const EdgeInsets.all(8.0),
+                    padding: const EdgeInsets.symmetric(
+                        horizontal: 28, vertical: 15),
                     child: Center(
                       child: Text(
                         "END MEETING",
-                        style: lato().copyWith(color: wh),
+                        style: lato()
+                            .copyWith(color: wh, fontWeight: FontWeight.bold),
                       ),
                     ),
                   ),
@@ -164,6 +172,7 @@ class MeetingDetails extends StatelessWidget {
     return AppBar(
       title: const Text("Meeting Details"),
       actions: [NotificationIcon()],
+      centerTitle: true,
     );
   }
 
@@ -172,7 +181,13 @@ class MeetingDetails extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
-          content: const Text("Do you really want to end this meeting?"),
+          title: Text(
+            "Do you really want to end this meeting?",
+            style: TextStyle(fontSize: 18),
+          ),
+          content: SizedBox(
+            height: 20,
+          ),
           actions: [
             ElevatedButton(
               onPressed: () {
@@ -185,7 +200,7 @@ class MeetingDetails extends StatelessWidget {
             ElevatedButton(
               onPressed: () {
                 Navigator.push(context, MaterialPageRoute(builder: (_) {
-                  return MeetingEnd();
+                  return const MeetingEnd();
                 }));
               },
               child: Padding(
@@ -198,5 +213,4 @@ class MeetingDetails extends StatelessWidget {
       },
     );
   }
-
 }

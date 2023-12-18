@@ -5,13 +5,31 @@ import 'package:alleviz/screens/homePage/widgets/default_app_bar.dart';
 import 'package:alleviz/screens/homePage/widgets/default_app_bar2.dart';
 import 'package:alleviz/screens/spalsh/splashcolor.dart';
 import 'package:flutter/material.dart';
+import 'package:gif/gif.dart';
+// import 'package:gif_view/gif_view.dart';
 import 'package:google_fonts/google_fonts.dart';
-import 'package:cached_network_image/cached_network_image.dart';
+// import 'package:cached_network_image/cached_network_image.dart';
 
-class ForgotPassword extends StatelessWidget {
+class ForgotPassword extends StatefulWidget {
   const ForgotPassword({super.key});
-  // final CachedNetworkImageProvider gifProvider =
-  //     const CachedNetworkImageProvider('assets/gifs/forgotpw.gif');
+
+  @override
+  State<ForgotPassword> createState() => _ForgotPasswordState();
+}
+
+class _ForgotPasswordState extends State<ForgotPassword>
+    with SingleTickerProviderStateMixin {
+  late final controller;
+
+  @override
+  void initState() {
+    // TODO: implement initState
+    super.initState();
+    controller = GifController(vsync: this);
+
+    // gitSetUp();
+  }
+
   @override
   Widget build(BuildContext context) {
     final mq = MediaQuery.of(context).size;
@@ -88,7 +106,22 @@ class ForgotPassword extends StatelessWidget {
                         borderRadius: BorderRadius.circular(30))),
               ),
             ),
-            Expanded(child: Image.asset("assets/gifs/forgotpw.gif"))
+            Center(
+              child: SizedBox(
+                height: MediaQuery.of(context).size.height * 0.4,
+                child: Gif(
+                  image: AssetImage('assets/gifs/forgotpw.gif'),
+                  repeat: ImageRepeat.noRepeat,
+                  autostart: Autostart.once,
+                  controller: controller,
+                  placeholder: (context) => const Text('Loading...'),
+                  onFetchCompleted: () {
+                    controller.reset();
+                    controller.forward();
+                  },
+                ),
+              ),
+            )
             // Expanded(
             //   child: CachedNetworkImage(
             //     imageUrl: 'assets/gifs/forgotpw.gif',
