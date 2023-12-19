@@ -1,6 +1,7 @@
 import 'package:alleviz/constants/colors.dart';
 import 'package:alleviz/screens/LogIn/create_meeting.dart';
 import 'package:alleviz/screens/homePage/existing_meeting/visitors_details.dart';
+import 'package:alleviz/screens/homePage/home_page.dart';
 import 'package:alleviz/screens/homePage/modal/person.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
@@ -32,7 +33,7 @@ class ExisitingMeeting extends StatelessWidget {
         leading: IconButton(
             onPressed: () {
               Navigator.pushReplacement(
-                  context, MaterialPageRoute(builder: (_) => CreateMeeting()));
+                  context, MaterialPageRoute(builder: (_) => MyHomePage()));
             },
             icon: Icon(Icons.arrow_back)),
         title: TextField(
@@ -47,7 +48,6 @@ class ExisitingMeeting extends StatelessWidget {
         ),
       ),
       body: Container(
-        color: tertiaryColor,
         child: ListView.builder(
           itemCount: persons.length,
           itemBuilder: (BuildContext context, int index) {

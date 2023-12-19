@@ -55,22 +55,20 @@ class MeetingDetails extends StatelessWidget {
                 decoration: BoxDecoration(
                     color: wh, borderRadius: BorderRadius.circular(22)),
                 child: Column(children: [
-                  Padding(
-                    padding: const EdgeInsets.all(8.0),
-                    child: Row(
-                      children: [
-                        const Spacer(),
-                        IconButton(
-                          icon: Icon(
-                            Icons.cancel,
-                            color: primary,
-                          ),
-                          onPressed: () {
-                            Navigator.pop(context);
-                          },
-                        )
-                      ],
-                    ),
+                  Row(
+                    children: [
+                      const Spacer(),
+                      IconButton(
+                        icon: Icon(
+                          Icons.cancel,
+                          color: primary,
+                          size: 38,
+                        ),
+                        onPressed: () {
+                          Navigator.pop(context);
+                        },
+                      )
+                    ],
                   ),
                   Container(
                     clipBehavior: Clip.hardEdge,
@@ -83,6 +81,9 @@ class MeetingDetails extends StatelessWidget {
                     ),
                     width: 90.0,
                     height: 90.0,
+                  ),
+                  SizedBox(
+                    height: 20,
                   ),
                   Text(
                     meeting.name,
@@ -100,10 +101,13 @@ class MeetingDetails extends StatelessWidget {
                   Row(
                     children: [
                       Padding(
-                        padding: const EdgeInsets.only(left: 10.0, top: 8.0),
-                        child: Text("Co-Visiters List"),
+                        padding: const EdgeInsets.only(left: 18.0, top: 8.0),
+                        child: Text("Co-Visitors List"),
                       )
                     ],
+                  ),
+                  const SizedBox(
+                    height: 15,
                   ),
                   Expanded(
                     child: ListView.builder(
@@ -111,8 +115,8 @@ class MeetingDetails extends StatelessWidget {
                       itemBuilder: (context, index) {
                         return Padding(
                           padding: const EdgeInsets.only(
-                            left: 7.0,
-                            right: 7.0,
+                            left: 18.0,
+                            right: 18.0,
                           ),
                           child: Container(
                             decoration: BoxDecoration(
@@ -120,7 +124,7 @@ class MeetingDetails extends StatelessWidget {
                                     bottom: BorderSide(width: 0.6),
                                     right: bs,
                                     left: bs),
-                                borderRadius: BorderRadius.circular(12)),
+                                borderRadius: BorderRadius.circular(8)),
                             child: Padding(
                               padding: const EdgeInsets.only(
                                   top: 15.0, left: 20, bottom: 15.0),
@@ -145,7 +149,8 @@ class MeetingDetails extends StatelessWidget {
                   sure(context);
                 },
                 child: Container(
-                  width: double.infinity,
+                  // width: double.infinity,
+                  width: MediaQuery.of(context).size.width * 0.6,
                   decoration: BoxDecoration(
                       color: end, borderRadius: BorderRadius.circular(30)),
                   child: Padding(
@@ -181,6 +186,7 @@ class MeetingDetails extends StatelessWidget {
       context: context,
       builder: (context) {
         return AlertDialog(
+          actionsAlignment: MainAxisAlignment.center,
           title: Text(
             "Do you really want to end this meeting?",
             style: TextStyle(fontSize: 18),

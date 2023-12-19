@@ -70,11 +70,10 @@ class _NotificationScreenState extends State<NotificationScreen> {
     return ListView.builder(
         itemCount: notification.length,
         itemBuilder: (context, index) {
-          return Card(
-            shape:
-                RoundedRectangleBorder(borderRadius: BorderRadius.circular(0)),
+          return Container(
             child: Column(
               children: [
+                Divider(),
                 ListTile(
                   leading: IconButton(
                     icon: notification[index].iswaiting
@@ -82,7 +81,12 @@ class _NotificationScreenState extends State<NotificationScreen> {
                         : Icon(Icons.info),
                     onPressed: () {},
                   ),
-                  title: Text(notification[index].title),
+                  title: Text(
+                    notification[index].title,
+                    style: notification[index] == notification[0]
+                        ? TextStyle(fontWeight: FontWeight.bold)
+                        : TextStyle(),
+                  ),
                   trailing: Column(
                     children: [
                       Transform.flip(

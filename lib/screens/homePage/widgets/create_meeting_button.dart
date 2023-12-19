@@ -27,8 +27,8 @@ class CreateMeetingButton extends StatelessWidget {
           height: system,
           child: Center(
               child: Text(
-            "Create Meeting",
-            style: t1(),
+            "CREATE MEETING",
+            style: t1().copyWith(fontWeight: FontWeight.bold),
           )),
         ),
       ),

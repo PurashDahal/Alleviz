@@ -297,6 +297,8 @@ class _MeetingDetails2State extends State<MeetingDetails2> {
       context: context,
       builder: (context) {
         return AlertDialog(
+          actionsAlignment: MainAxisAlignment.center,
+
           title: Text(
             "Do you really want to remove this meeting?",
             style: TextStyle(fontSize: 18),
@@ -341,6 +343,7 @@ class _MeetingDetails2State extends State<MeetingDetails2> {
       context: context,
       builder: (context) {
         return AlertDialog(
+          actionsAlignment: MainAxisAlignment.center,
           title: Text(
             "Do you really want to reschedule this meeting?",
             style: TextStyle(fontSize: 18),
@@ -348,7 +351,6 @@ class _MeetingDetails2State extends State<MeetingDetails2> {
           content: SizedBox(
             height: 20,
           ),
-         
           actions: [
             ElevatedButton(
               onPressed: () {
@@ -385,6 +387,7 @@ class _MeetingDetails2State extends State<MeetingDetails2> {
       context: context,
       builder: (context) {
         return AlertDialog(
+          actionsAlignment: MainAxisAlignment.center,
           title: Text(
             "Do you really want to reschedule this meeting?",
             style: TextStyle(fontSize: 18),

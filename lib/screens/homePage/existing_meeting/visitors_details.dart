@@ -1,4 +1,5 @@
 import 'package:alleviz/constants/colors.dart';
+import 'package:alleviz/screens/homePage/home_page.dart';
 import 'package:flutter/material.dart';
 import 'package:google_fonts/google_fonts.dart';
 
@@ -30,10 +31,10 @@ class VisitorsDetails extends StatelessWidget {
                   IconButton(
                       onPressed: () {
                         // purash vai
-                        Navigator.pushReplacement(
+                        Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => ExisitingMeeting()));
+                                builder: (context) => MyHomePage()));
                       },
                       icon: Icon(Icons.arrow_back)),
                   Container(

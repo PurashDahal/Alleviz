@@ -341,9 +341,9 @@ class _MyHomePageState extends State<MyHomePage> {
     return AppBar(
       title: Text(
         appBartoggle == true ? appBarText1 : appBarText2,
-        style: TextStyle(fontSize: 17.0, fontWeight: FontWeight.bold),
+        style: TextStyle(fontSize: 24.0, fontWeight: FontWeight.w600),
       ),
-      centerTitle: true,
+      // centerTitle: true,
       leading: Builder(builder: (context) {
         return IconButton(
           icon: Icon(
